@@ -63,9 +63,15 @@ window.addEventListener('keydown', function(e){
   // console.log(e.keyCode);
   // a key with audio is pressed, play sound
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  // animation on key. check to see the right key is pressed
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
   console.log(audio);
-  audio.currentTime = 0; // rewinds the sound to the start, so you can click button multiple times
+  console.log(key);
+  audio.currentTime = 0; // rewinds the sound to the start, so you can click button multiple times aka you can hit the key in succession
+  // plays audio when clicked
   audio.play();
+  // add animation to button when press. we can also write it like this with jquery key.addClass('playing');
+  key.classList.add('playing');
   // if there is a key with no audio assigned, then stop the function from running
   if(!audio) return;
 });
